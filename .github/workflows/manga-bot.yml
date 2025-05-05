@@ -3,7 +3,7 @@ name: Lancer le bot manga toutes les 10 minutes
 on:
   schedule:
     - cron: "*/10 * * * *"  # Toutes les 10 minutes
-  workflow_dispatch:        # Pour le lancer manuellement aussi
+  workflow_dispatch:        # Permet de lancer manuellement
 
 jobs:
   run-bot:
@@ -16,7 +16,7 @@ jobs:
       - name: 🐍 Installer Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: 📦 Installer les dépendances
         run: |
@@ -25,3 +25,5 @@ jobs:
 
       - name: ▶️ Lancer le bot
         run: python sync_manga.py
+        env:
+          PYTHONIOENCODING: utf-8
